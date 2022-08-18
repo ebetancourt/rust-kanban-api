@@ -1,0 +1,4 @@
+## Hit the Root
+GET http://127.0.0.1:8080/boards/
+
+## Get all Boards
