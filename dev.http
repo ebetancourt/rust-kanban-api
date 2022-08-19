@@ -12,3 +12,15 @@ content-type: application/json
 
 ### Get all Boards
 GET http://127.0.0.1:8080/boards/
+
+### Get Boards by ID
+GET http://127.0.0.1:8080/boards/4
+
+### Create Column Request
+POST http://127.0.0.1:8080/boards/4/columns/new/
+content-type: application/json
+
+{
+	"title": "Done",
+	"order": 5
+}

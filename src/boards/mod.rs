@@ -1,9 +1,22 @@
-use serde::{Serialize, Serializer, ser::SerializeStruct};
+use serde::{Serialize, Serializer, ser::SerializeStruct, Deserialize};
 
 pub struct Board {
     id: i32,
     title: String,
     description: String,
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
+pub struct Column {
+    id: i32,
+    board: i32,
+    title: String,
+}
+
+impl Column {
+    pub fn new(id: i32, title: String, board: i32) -> Column {
+        Column { id, board, title }
+    }
 }
 
 impl Board {

@@ -22,24 +22,24 @@ async fn main() {
         .and(warp::body::json())
         .and_then(create_board);
 
-    let routes = root_path.or(boards_index).or(boards_create);
+    let board_get = warp::path("boards")
+        .and(warp::get())
+        .and(warp::path::param())
+        .and(db::with_database())
+        .and_then(get_board_by_id);
+    
+    let add_column = warp::path!("boards" / i32 / "columns" / "new")
+        .and(warp::post())
+        .and(warp::path::end())
+        .and(db::with_database())
+        .and(warp::body::json())
+        .and_then(add_column);
+
+    let routes = root_path.or(boards_index).or(boards_create).or(board_get).or(add_column);
 
     println!("API Server Started!!!");
     warp::serve(routes).run(([127, 0, 0, 1], 8080)).await;
 }
-
-// fn build_random_boards() -> Vec<boards::Board> {
-//     let mut boards = Vec::new();
-//     for i in 0..10 {
-//         let board = boards::Board::new(
-//             i,
-//             "title".to_string(),
-//             "description".to_string(),
-//         );
-//         boards.push(board);
-//     }
-//     boards
-// }
 
 async fn get_boards(db: Db) -> Result<Json, warp::Rejection> {
     let boards = db.get_boards().unwrap();
@@ -58,4 +58,26 @@ async fn create_board(
 ) -> Result<Json, warp::Rejection> {
     let new_board = db.create_board(body.title, body.description).unwrap();
     Ok(warp::reply::json(&new_board))
+}
+
+async fn get_board_by_id(
+    id: i32,
+    db: Db,
+) -> Result<Json, warp::Rejection> {
+    let board = db.get_board_by_id(id).unwrap();
+    Ok(warp::reply::json(&board))
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
+struct ColumnCreateRequest {
+    pub title: String,
+    pub order: i32,
+}
+async fn add_column(
+    board_id: i32,
+    db: Db,
+    body: ColumnCreateRequest,
+) -> Result<Json, warp::Rejection> {
+    let column = db.add_column(board_id, body.title, body.order).unwrap();
+    Ok(warp::reply::json(&column))
 }
