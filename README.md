@@ -15,8 +15,9 @@ BTW - I am using [REST Client - Visual Studio Marketplace](https://marketplace.v
 ## 🚀 Running this thing
 1. Assuming you have Rust already installed 🙃
 2. clone the project locally
-3. Probably should just use the VS Code Extension listed above. If not, you can just look at the [dev.http](dev.http) file to get an idea of the format of the HTTP requests.
-4. Profit
+3. `cargo run`
+4. Probably should just use the VS Code Extension listed above. If not, you can just look at the [dev.http](dev.http) file to get an idea of the format of the HTTP requests.
+5. Profit
 
 ![profit](https://user-images.githubusercontent.com/757917/185677900-6471ff99-834d-407e-80f9-d7b26837bb09.png)
 
