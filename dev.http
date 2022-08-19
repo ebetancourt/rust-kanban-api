@@ -13,7 +13,7 @@ content-type: application/json
 ### Get all Boards
 GET http://127.0.0.1:8080/boards/
 
-### Get Boards by ID
+### Get Board by ID
 GET http://127.0.0.1:8080/boards/4
 
 ### Create Column Request

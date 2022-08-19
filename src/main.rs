@@ -1,3 +1,5 @@
+//! This is a simple example of using warp to serve a JSON API.
+//! I am working on learning Rust and this is my first project.
 use db::Db;
 use serde::{Deserialize, Serialize};
 use warp::{reply::Json, Filter};
@@ -64,7 +66,10 @@ async fn get_board_by_id(
     id: i32,
     db: Db,
 ) -> Result<Json, warp::Rejection> {
-    let board = db.get_board_by_id(id).unwrap();
+    let mut board = db.get_board_by_id(id).unwrap();
+    let columns = db.get_columns_for_board(id).unwrap();
+    board.set_columns(columns);
+
     Ok(warp::reply::json(&board))
 }
 
