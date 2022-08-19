@@ -1,4 +1,14 @@
-## Hit the Root
-GET http://127.0.0.1:8080/boards/
+### Hit the Root
+GET http://127.0.0.1:8080/
 
-## Get all Boards
+### Create a board
+POST http://127.0.0.1:8080/boards/new/
+content-type: application/json
+
+{
+	"title": "Fancy Project",
+	"description": "this is for agile stuff!"
+}
+
+### Get all Boards
+GET http://127.0.0.1:8080/boards/

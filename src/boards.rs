@@ -2,12 +2,12 @@ use serde::{Serialize, Serializer, ser::SerializeStruct};
 
 pub struct Board {
     id: i32,
-    title: Option<String>,
-    description: Option<String>,
+    title: String,
+    description: String,
 }
 
 impl Board {
-    pub fn new(id: i32, title: Option<String>, description: Option<String>) -> Board {
+    pub fn new(id: i32, title: String, description: String) -> Board {
         Board {
             id,
             title,
