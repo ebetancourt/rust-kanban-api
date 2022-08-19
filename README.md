@@ -15,7 +15,7 @@ BTW - I am using [REST Client - Visual Studio Marketplace](https://marketplace.v
 ## 📚 About My Learning Path So Far
 I managed to do this after finishing [Ultimate Rust Crash Course | Udemy](https://www.udemy.com/course/ultimate-rust-crash-course/) and making it maybe 50% of the way through [Ultimate Rust 2: Intermediate Concepts | Udemy](https://www.udemy.com/course/ultimate-rust-2/) Then looking at a few tutorials / samples / and existing code. Also, to be honest GitHub Copilot helped! 😉
 
-I plan to finish *Ultimate Rust 2* and also Rustlings, which as you can see from [my fork](https://github.com/ebetancourt/rustlings) I have gotten about half way though "Move Semantics"!
+I plan to finish *Ultimate Rust 2* and also Rustlings, which as you can see from [my fork](https://github.com/ebetancourt/rustlings) I have gotten about half way trhough "Move Semantics"!
 
 ## ✅ TODO (Someday):
 - [ ] add cards any one of those columns
